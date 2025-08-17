@@ -78,7 +78,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-16">
                     <div class="flex items-center">
-                        <svg class="h-8 w-8 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 B24 24" stroke="currentColor">
+                        <svg class="h-8 w-8 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
                         <span class="ml-3 font-bold text-xl text-gray-800">ระบบจัดการโครงการโรงเรียน</span>
@@ -133,8 +133,10 @@
             </div>
 
             <div id="all-projects-content" class="tab-content hidden admin-only">
-                 <h2 class="text-2xl font-bold text-gray-800 mb-4">โครงการทั้งหมดในระบบ</h2>
-                 <div id="all-projects-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+                 <h2 class="text-2xl font-bold text-gray-800 mb-4">โครงการทั้งหมดในระบบ (จำแนกตามฝ่ายงาน)</h2>
+                 <div id="all-projects-list">
+                    <!-- Admin's grouped project view will be rendered here -->
+                 </div>
             </div>
 
             <div id="master-data-content" class="tab-content hidden admin-only">
@@ -185,18 +187,64 @@
             strategies: [{ id: 1, text: 'กลยุทธ์ที่ 1 พัฒนาคุณภาพผู้เรียน' }, { id: 2, text: 'กลยุทธ์ที่ 2 พัฒนาคุณภาพครู' }]
         };
 
+        // Expanded project data (45 projects)
         let projects = [
+            // Teacher 1
             { id: 1, name: 'โครงการวันวิทยาศาสตร์', description: 'กิจกรรมส่งเสริมความรู้ทางวิทยาศาสตร์', owner: 'teacher1', submitted: true, departmentId: 1, learningAreaId: 3, standardIds: [1], strategyIds: [1] },
             { id: 2, name: 'โครงการค่ายคุณธรรม', description: 'กิจกรรมส่งเสริมคุณธรรมจริยธรรม', owner: 'teacher1', submitted: false, departmentId: 4, learningAreaId: 1, standardIds: [1], strategyIds: [] },
+            { id: 7, name: 'โครงการอบรมการใช้ ICT', description: 'พัฒนาทักษะดิจิทัลสำหรับครู', owner: 'teacher1', submitted: true, departmentId: 3, learningAreaId: 3, standardIds: [2], strategyIds: [2] },
+            { id: 10, name: 'โครงการติว O-NET', description: 'เตรียมความพร้อมนักเรียนสอบระดับชาติ', owner: 'teacher1', submitted: true, departmentId: 1, learningAreaId: 2, standardIds: [1], strategyIds: [1] },
+            { id: 11, name: 'โครงการ English Camp', description: 'ค่ายส่งเสริมทักษะภาษาอังกฤษ', owner: 'teacher1', submitted: false, departmentId: 1, learningAreaId: 1, standardIds: [1], strategyIds: [1] },
+            { id: 12, name: 'โครงการจัดซื้อสื่อการสอน', description: 'จัดหาสื่อเทคโนโลยีเพื่อการศึกษา', owner: 'teacher1', submitted: true, departmentId: 2, learningAreaId: 3, standardIds: [2], strategyIds: [2] },
+            { id: 13, name: 'โครงการเยี่ยมบ้านนักเรียน', description: 'สร้างความสัมพันธ์ระหว่างบ้านและโรงเรียน', owner: 'teacher1', submitted: true, departmentId: 4, learningAreaId: 1, standardIds: [1], strategyIds: [] },
+            { id: 14, name: 'โครงการพัฒนาบุคลากร', description: 'ส่งเสริมครูเข้ารับการอบรม', owner: 'teacher1', submitted: false, departmentId: 3, learningAreaId: 2, standardIds: [2], strategyIds: [2] },
+            { id: 15, name: 'โครงการแข่งขันตอบปัญหาวิชาการ', description: 'เวทีแสดงความสามารถของนักเรียน', owner: 'teacher1', submitted: true, departmentId: 1, learningAreaId: 3, standardIds: [1], strategyIds: [1] },
+
+            // Teacher 2
             { id: 3, name: 'โครงการอบรมเชิงปฏิบัติการ', description: 'ส่งเสริมการเรียนรู้ของครู', owner: 'teacher2', submitted: true, departmentId: 3, learningAreaId: 2, standardIds: [2], strategyIds: [2] },
             { id: 4, name: 'โครงการพัฒนาแหล่งเรียนรู้', description: 'ปรับปรุงห้องสมุดและสวนพฤกษศาสตร์', owner: 'teacher2', submitted: false, departmentId: 4, learningAreaId: 3, standardIds: [2], strategyIds: [1] },
+            { id: 8, name: 'โครงการทัศนศึกษา', description: 'เปิดโลกทัศน์การเรียนรู้นอกห้องเรียน', owner: 'teacher2', submitted: false, departmentId: 1, learningAreaId: 1, standardIds: [1], strategyIds: [1] },
+            { id: 16, name: 'โครงการวันภาษาไทย', description: 'อนุรักษ์และสืบสานภาษาไทย', owner: 'teacher2', submitted: true, departmentId: 1, learningAreaId: 1, standardIds: [1], strategyIds: [] },
+            { id: 17, name: 'โครงการซ่อมบำรุงอาคาร', description: 'ปรับปรุงซ่อมแซมอาคารเรียน', owner: 'teacher2', submitted: true, departmentId: 2, learningAreaId: 3, standardIds: [2], strategyIds: [] },
+            { id: 18, name: 'โครงการโรงเรียนสีเขียว', description: 'รณรงค์การประหยัดพลังงานและสิ่งแวดล้อม', owner: 'teacher2', submitted: false, departmentId: 4, learningAreaId: 3, standardIds: [2], strategyIds: [1] },
+            { id: 19, name: 'โครงการแนะแนวศึกษาต่อ', description: 'ให้ข้อมูลนักเรียนเพื่อศึกษาต่อ', owner: 'teacher2', submitted: true, departmentId: 1, learningAreaId: 2, standardIds: [1], strategyIds: [1] },
+            { id: 20, name: 'โครงการประเมินผลการปฏิบัติงาน', description: 'ประเมินผลการทำงานของบุคลากร', owner: 'teacher2', submitted: true, departmentId: 3, learningAreaId: 1, standardIds: [2], strategyIds: [2] },
+            { id: 21, name: 'โครงการจัดหาคอมพิวเตอร์', description: 'เพิ่มจำนวนคอมพิวเตอร์เพื่อการเรียนรู้', owner: 'teacher2', submitted: false, departmentId: 2, learningAreaId: 3, standardIds: [2], strategyIds: [2] },
+
+            // Teacher 3
             { id: 5, name: 'โครงการสัปดาห์ห้องสมุด', description: 'จัดกิจกรรมส่งเสริมการอ่าน', owner: 'teacher3', submitted: true, departmentId: 1, learningAreaId: 1, standardIds: [1], strategyIds: [1] },
             { id: 6, name: 'โครงการแข่งขันกีฬาภายใน', description: 'ส่งเสริมสุขภาพและพลานามัย', owner: 'teacher3', submitted: true, departmentId: 4, learningAreaId: 2, standardIds: [1], strategyIds: [] },
-            { id: 7, name: 'โครงการอบรมการใช้ ICT', description: 'พัฒนาทักษะดิจิทัลสำหรับครู', owner: 'teacher1', submitted: true, departmentId: 3, learningAreaId: 3, standardIds: [2], strategyIds: [2] },
-            { id: 8, name: 'โครงการทัศนศึกษา', description: 'เปิดโลกทัศน์การเรียนรู้นอกห้องเรียน', owner: 'teacher2', submitted: false, departmentId: 1, learningAreaId: 1, standardIds: [1], strategyIds: [1] },
             { id: 9, name: 'โครงการปัจฉิมนิเทศ', description: 'กิจกรรมสำหรับนักเรียนที่สำเร็จการศึกษา', owner: 'teacher3', submitted: true, departmentId: 1, learningAreaId: 2, standardIds: [1], strategyIds: [] },
+            { id: 22, name: 'โครงการวันคริสต์มาส', description: 'กิจกรรมแลกเปลี่ยนวัฒนธรรม', owner: 'teacher3', submitted: true, departmentId: 4, learningAreaId: 1, standardIds: [1], strategyIds: [] },
+            { id: 23, name: 'โครงการคณิตคิดเร็ว', description: 'แข่งขันคิดเลขเร็วระดับโรงเรียน', owner: 'teacher3', submitted: false, departmentId: 1, learningAreaId: 2, standardIds: [1], strategyIds: [1] },
+            { id: 24, name: 'โครงการปรับปรุงภูมิทัศน์', description: 'พัฒนาสภาพแวดล้อมในโรงเรียน', owner: 'teacher3', submitted: true, departmentId: 4, learningAreaId: 3, standardIds: [2], strategyIds: [] },
+            { id: 25, name: 'โครงการอบรมครูผู้ช่วย', description: 'เตรียมความพร้อมครูบรรจุใหม่', owner: 'teacher3', submitted: false, departmentId: 3, learningAreaId: 1, standardIds: [2], strategyIds: [2] },
+            { id: 26, name: 'โครงการจัดทำแผนปฏิบัติการ', description: 'วางแผนการดำเนินงานประจำปี', owner: 'teacher3', submitted: true, departmentId: 2, learningAreaId: 2, standardIds: [2], strategyIds: [] },
+            { id: 27, name: 'โครงการประกวดโครงงานวิทยาศาสตร์', description: 'ส่งเสริมนักวิจัยน้อย', owner: 'teacher3', submitted: true, departmentId: 1, learningAreaId: 3, standardIds: [1], strategyIds: [1] },
+
+            // Teacher 4
+            { id: 28, name: 'โครงการวันสุนทรภู่', description: 'รำลึกกวีเอกของไทย', owner: 'teacher4', submitted: true, departmentId: 1, learningAreaId: 1, standardIds: [1], strategyIds: [] },
+            { id: 29, name: 'โครงการ Big Cleaning Day', description: 'กิจกรรมทำความสะอาดโรงเรียน', owner: 'teacher4', submitted: true, departmentId: 4, learningAreaId: 3, standardIds: [2], strategyIds: [] },
+            { id: 30, name: 'โครงการศึกษาดูงาน', description: 'นำครูไปศึกษาดูงานโรงเรียนต้นแบบ', owner: 'teacher4', submitted: false, departmentId: 3, learningAreaId: 2, standardIds: [2], strategyIds: [2] },
+            { id: 31, name: 'โครงการตลาดนัดวิชาการ', description: 'แสดงผลงานนักเรียนและครู', owner: 'teacher4', submitted: true, departmentId: 1, learningAreaId: 3, standardIds: [1], strategyIds: [1] },
+            { id: 32, name: 'โครงการสารสนเทศโรงเรียน', description: 'พัฒนาระบบข้อมูลของโรงเรียน', owner: 'teacher4', submitted: false, departmentId: 2, learningAreaId: 3, standardIds: [2], strategyIds: [2] },
+            { id: 33, name: 'โครงการประชุมผู้ปกครอง', description: 'สร้างความเข้าใจร่วมกันระหว่างบ้านและโรงเรียน', owner: 'teacher4', submitted: true, departmentId: 4, learningAreaId: 1, standardIds: [2], strategyIds: [] },
+            { id: 34, name: 'โครงการประกันคุณภาพการศึกษา', description: 'เตรียมรับการประเมินคุณภาพ', owner: 'teacher4', submitted: true, departmentId: 1, learningAreaId: 2, standardIds: [2], strategyIds: [] },
+            { id: 35, name: 'โครงการอบรมภาวะผู้นำ', description: 'พัฒนาศักยภาพสภานักเรียน', owner: 'teacher4', submitted: false, departmentId: 4, learningAreaId: 1, standardIds: [1], strategyIds: [1] },
+            { id: 36, name: 'โครงการจัดทำวารสารโรงเรียน', description: 'ประชาสัมพันธ์ข่าวสารและผลงาน', owner: 'teacher4', submitted: true, departmentId: 1, learningAreaId: 1, standardIds: [2], strategyIds: [] },
+
+            // Teacher 5
+            { id: 37, name: 'โครงการ To Be Number One', description: 'รณรงค์ป้องกันยาเสพติด', owner: 'teacher5', submitted: true, departmentId: 4, learningAreaId: 3, standardIds: [1], strategyIds: [] },
+            { id: 38, name: 'โครงการส่งเสริมประชาธิปไตย', description: 'กิจกรรมเลือกตั้งสภานักเรียน', owner: 'teacher5', submitted: true, departmentId: 4, learningAreaId: 1, standardIds: [1], strategyIds: [] },
+            { id: 39, name: 'โครงการพัฒนาหลักสูตร', description: 'ปรับปรุงหลักสูตรสถานศึกษา', owner: 'teacher5', submitted: false, departmentId: 1, learningAreaId: 2, standardIds: [2], strategyIds: [1] },
+            { id: 40, name: 'โครงการจัดซื้อครุภัณฑ์', description: 'จัดซื้อโต๊ะเก้าอี้สำหรับห้องเรียนใหม่', owner: 'teacher5', submitted: true, departmentId: 2, learningAreaId: 3, standardIds: [2], strategyIds: [] },
+            { id: 41, name: 'โครงการ PLC ชุมชนแห่งการเรียนรู้', description: 'ส่งเสริมการแลกเปลี่ยนเรียนรู้ของครู', owner: 'teacher5', submitted: true, departmentId: 3, learningAreaId: 1, standardIds: [2], strategyIds: [2] },
+            { id: 42, name: 'โครงการสอบวัดผลกลางภาค', description: 'ดำเนินการจัดสอบกลางภาคเรียน', owner: 'teacher5', submitted: true, departmentId: 1, learningAreaId: 2, standardIds: [1], strategyIds: [] },
+            { id: 43, name: 'โครงการซ้อมหนีไฟ', description: 'เตรียมความพร้อมรับมือเหตุฉุกเฉิน', owner: 'teacher5', submitted: false, departmentId: 4, learningAreaId: 3, standardIds: [2], strategyIds: [] },
+            { id: 44, name: 'โครงการวันแม่แห่งชาติ', description: 'จัดกิจกรรมเฉลิมพระเกียรติ', owner: 'teacher5', submitted: true, departmentId: 4, learningAreaId: 1, standardIds: [1], strategyIds: [] },
+            { id: 45, name: 'โครงการวิจัยในชั้นเรียน', description: 'ส่งเสริมครูทำวิจัยเพื่อพัฒนาผู้เรียน', owner: 'teacher5', submitted: false, departmentId: 1, learningAreaId: 3, standardIds: [2], strategyIds: [2] },
         ];
-        let nextProjectId = 10;
+        let nextProjectId = 46;
 
         const { jsPDF } = window.jspdf;
         async function generatePdf(projectId) {
@@ -329,7 +377,37 @@
 
             renderAllProjects() {
                 const container = document.getElementById('all-projects-list');
-                container.innerHTML = projects.map(p => this.createProjectCard(p)).join('');
+                container.innerHTML = ''; // Clear previous content
+
+                const projectsByDept = projects.reduce((acc, project) => {
+                    const deptId = project.departmentId;
+                    if (!acc[deptId]) acc[deptId] = [];
+                    acc[deptId].push(project);
+                    return acc;
+                }, {});
+
+                masterData.departments.forEach(dept => {
+                    const deptProjects = projectsByDept[dept.id] || [];
+                    if (deptProjects.length === 0) return;
+
+                    const submittedCount = deptProjects.filter(p => p.submitted).length;
+                    const totalCount = deptProjects.length;
+
+                    const departmentSection = document.createElement('div');
+                    departmentSection.className = 'mb-10';
+                    departmentSection.innerHTML = `
+                        <div class="border-b border-gray-200 pb-2 mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">${dept.text}</h3>
+                            <p class="text-sm text-gray-500">
+                                สถานะ: <span class="font-semibold text-green-600">${submittedCount}</span> / ${totalCount} โครงการ (ส่งแล้ว)
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            ${deptProjects.map(p => this.createProjectCard(p)).join('')}
+                        </div>
+                    `;
+                    container.appendChild(departmentSection);
+                });
             },
 
             renderMasterData() {
