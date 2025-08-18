@@ -49,20 +49,12 @@
                 <div class="flex justify-center items-center">
                     <div class="w-64 h-64 relative">
                         <canvas id="stats-chart"></canvas>
-                        <div id="stats-total" class="absolute inset-0 flex flex-col items-center justify-center text-center">
-                            <!-- Total count will be injected here -->
-                        </div>
+                        <div id="stats-total" class="absolute inset-0 flex flex-col items-center justify-center text-center"></div>
                     </div>
                 </div>
                 <div class="mt-6 grid grid-cols-2 gap-4 text-center">
-                    <div>
-                        <p class="text-3xl font-bold text-green-600" id="stats-submitted">0</p>
-                        <p class="text-sm text-gray-500">โครงการที่ส่งแล้ว</p>
-                    </div>
-                    <div>
-                        <p class="text-3xl font-bold text-amber-500" id="stats-pending">0</p>
-                        <p class="text-sm text-gray-500">โครงการที่ยังไม่ส่ง</p>
-                    </div>
+                    <div><p class="text-3xl font-bold text-green-600" id="stats-submitted">0</p><p class="text-sm text-gray-500">โครงการที่ส่งแล้ว</p></div>
+                    <div><p class="text-3xl font-bold text-amber-500" id="stats-pending">0</p><p class="text-sm text-gray-500">โครงการที่ยังไม่ส่ง</p></div>
                 </div>
                 <div class="mt-6 border-t pt-4 text-sm text-gray-600 space-y-2">
                     <p><span class="inline-block w-4 h-4 rounded-full bg-green-600 mr-2 align-middle"></span><strong>โครงการที่ส่งแล้ว:</strong> คือโครงการที่ได้บันทึกข้อมูลและส่งเข้าระบบเรียบร้อยแล้ว</p>
@@ -78,9 +70,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-16">
                     <div class="flex items-center">
-                        <svg class="h-8 w-8 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
+                        <svg class="h-8 w-8 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
                         <span class="ml-3 font-bold text-xl text-gray-800">ระบบจัดการโครงการโรงเรียน</span>
                     </div>
                     <div class="flex items-center">
@@ -102,65 +92,23 @@
             </div>
 
             <!-- Tab Content -->
-            <div id="dashboard-content" class="tab-content">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4">ภาพรวมสถานะโครงการ</h2>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ชื่อโครงการ</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ฝ่ายงาน</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ผู้รับผิดชอบ</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">สถานะ</th>
-                                </tr>
-                            </thead>
-                            <tbody id="dashboard-table-body" class="bg-white divide-y divide-gray-200"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <div id="my-projects-content" class="tab-content hidden">
-                <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-2xl font-bold text-gray-800">โครงการของฉัน</h2>
-                    <button id="create-project-btn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center">
-                        <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
-                        สร้างโครงการใหม่
-                    </button>
-                </div>
-                <div id="my-projects-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-            </div>
-
-            <div id="all-projects-content" class="tab-content hidden admin-only">
-                 <h2 class="text-2xl font-bold text-gray-800 mb-4">โครงการทั้งหมดในระบบ (จำแนกตามฝ่ายงาน)</h2>
-                 <div id="all-projects-list">
-                    <!-- Admin's grouped project view will be rendered here -->
-                 </div>
-            </div>
-
-            <div id="master-data-content" class="tab-content hidden admin-only">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4">จัดการข้อมูลหลักของโรงเรียน</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-white p-6 rounded-lg shadow-md" data-master="departments"><h3 class="text-lg font-semibold mb-3">ฝ่ายงาน</h3><div class="mb-4"><input type="text" placeholder="เพิ่มฝ่ายงานใหม่..." class="master-input w-full p-2 border rounded"><button class="add-master-btn mt-2 w-full bg-blue-500 text-white p-2 rounded">เพิ่ม</button></div><ul class="master-list list-disc pl-5 space-y-2"></ul></div>
-                    <div class="bg-white p-6 rounded-lg shadow-md" data-master="learningAreas"><h3 class="text-lg font-semibold mb-3">กลุ่มสาระการเรียนรู้</h3><div class="mb-4"><input type="text" placeholder="เพิ่มกลุ่มสาระใหม่..." class="master-input w-full p-2 border rounded"><button class="add-master-btn mt-2 w-full bg-blue-500 text-white p-2 rounded">เพิ่ม</button></div><ul class="master-list list-disc pl-5 space-y-2"></ul></div>
-                    <div class="bg-white p-6 rounded-lg shadow-md" data-master="standards"><h3 class="text-lg font-semibold mb-3">มาตรฐานการศึกษา</h3><div class="mb-4"><input type="text" placeholder="เพิ่มมาตรฐานใหม่..." class="master-input w-full p-2 border rounded"><button class="add-master-btn mt-2 w-full bg-blue-500 text-white p-2 rounded">เพิ่ม</button></div><ul class="master-list list-disc pl-5 space-y-2"></ul></div>
-                    <div class="bg-white p-6 rounded-lg shadow-md" data-master="strategies"><h3 class="text-lg font-semibold mb-3">กลยุทธ์โรงเรียน</h3><div class="mb-4"><input type="text" placeholder="เพิ่มกลยุทธ์ใหม่..." class="master-input w-full p-2 border rounded"><button class="add-master-btn mt-2 w-full bg-blue-500 text-white p-2 rounded">เพิ่ม</button></div><ul class="master-list list-disc pl-5 space-y-2"></ul></div>
-                </div>
-            </div>
+            <div id="dashboard-content" class="tab-content"><h2 class="text-2xl font-bold text-gray-800 mb-4">ภาพรวมสถานะโครงการ</h2><div class="bg-white p-6 rounded-lg shadow-md"><div class="overflow-x-auto"><table class="min-w-full divide-y divide-gray-200"><thead class="bg-gray-50"><tr><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ชื่อโครงการ</th><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ฝ่ายงาน</th><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ผู้รับผิดชอบ</th><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">สถานะ</th></tr></thead><tbody id="dashboard-table-body" class="bg-white divide-y divide-gray-200"></tbody></table></div></div></div>
+            <div id="my-projects-content" class="tab-content hidden"><div class="flex justify-between items-center mb-4"><h2 class="text-2xl font-bold text-gray-800">โครงการของฉัน</h2><button id="create-project-btn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center"><svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>สร้างโครงการใหม่</button></div><div id="my-projects-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div></div>
+            <div id="all-projects-content" class="tab-content hidden admin-only"><h2 class="text-2xl font-bold text-gray-800 mb-4">โครงการทั้งหมดในระบบ (จำแนกตามฝ่ายงาน)</h2><div id="all-projects-list"></div></div>
+            <div id="master-data-content" class="tab-content hidden admin-only"><h2 class="text-2xl font-bold text-gray-800 mb-4">จัดการข้อมูลหลักของโรงเรียน</h2><div id="master-data-container" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div></div>
         </main>
     </div>
 
     <!-- Project Form Modal -->
     <div id="project-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center modal-backdrop overflow-y-auto p-4">
-        <div class="bg-white rounded-lg shadow-xl p-8 w-full max-w-3xl mx-auto">
+        <div class="bg-white rounded-lg shadow-xl p-8 w-full max-w-4xl mx-auto">
             <h2 id="project-modal-title" class="text-2xl font-bold text-gray-800 mb-6">สร้างโครงการใหม่</h2>
-            <form id="project-form" class="space-y-4">
+            <form id="project-form" class="space-y-6">
                 <input type="hidden" id="project-id">
-                <div><label for="project-name" class="block text-sm font-medium text-gray-700">ชื่อโครงการ</label><input type="text" id="project-name" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required></div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div><label for="project-department" class="block text-sm font-medium text-gray-700">ฝ่ายงาน</label><select id="project-department" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required></select></div><div><label for="project-learningArea" class="block text-sm font-medium text-gray-700">กลุ่มสาระการเรียนรู้</label><select id="project-learningArea" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required></select></div></div>
-                <div><label for="project-description" class="block text-sm font-medium text-gray-700">หลักการและเหตุผล</label><textarea id="project-description" rows="3" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required></textarea></div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div><label class="block text-sm font-medium text-gray-700">ความสอดคล้องกับมาตรฐานการศึกษา</label><div id="project-standards" class="mt-2 space-y-2 max-h-32 overflow-y-auto border p-2 rounded-md"></div></div><div><label class="block text-sm font-medium text-gray-700">ความสอดคล้องกับกลยุทธ์โรงเรียน</label><div id="project-strategies" class="mt-2 space-y-2 max-h-32 overflow-y-auto border p-2 rounded-md"></div></div></div>
+                <!-- Project Details Section -->
+                <fieldset class="border p-4 rounded-md"><legend class="px-2 font-semibold">1. รายละเอียดโครงการ</legend><div class="space-y-4"><div><label for="project-name" class="block text-sm font-medium text-gray-700">ชื่อโครงการ</label><input type="text" id="project-name" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required></div><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div><label for="project-department" class="block text-sm font-medium text-gray-700">ฝ่ายงาน</label><select id="project-department" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required></select></div><div><label for="project-learningArea" class="block text-sm font-medium text-gray-700">กลุ่มสาระฯ</label><select id="project-learningArea" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required></select></div></div><div><label for="project-description" class="block text-sm font-medium text-gray-700">หลักการและเหตุผล</label><textarea id="project-description" rows="3" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required></textarea></div><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div><label class="block text-sm font-medium text-gray-700">มาตรฐานการศึกษา</label><div id="project-standards" class="mt-2 space-y-2 max-h-32 overflow-y-auto border p-2 rounded-md"></div></div><div><label class="block text-sm font-medium text-gray-700">กลยุทธ์โรงเรียน</label><div id="project-strategies" class="mt-2 space-y-2 max-h-32 overflow-y-auto border p-2 rounded-md"></div></div></div></div></fieldset>
+                <!-- Budget & Resources Section -->
+                <fieldset class="border p-4 rounded-md"><legend class="px-2 font-semibold">2. งบประมาณและทรัพยากร</legend><div class="space-y-4"><div><label for="project-budget" class="block text-sm font-medium text-gray-700">งบประมาณโครงการ (บาท)</label><input type="number" id="project-budget" placeholder="0.00" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required></div><div class="border-t pt-4"><h4 class="font-medium text-gray-800 mb-2">เพิ่มรายการทรัพยากร</h4><div class="bg-gray-50 p-3 rounded-md grid grid-cols-1 md:grid-cols-2 gap-4 items-end"><fieldset class="border p-2 rounded-md"><legend class="px-1 text-sm">เลือกจากรายการกลาง</legend><div class="flex gap-2 items-end"><div class="flex-grow"><label for="resource-select" class="text-xs">รายการ</label><select id="resource-select" class="w-full p-2 border border-gray-300 rounded-md"></select></div><div><label for="resource-quantity" class="text-xs">จำนวน</label><input type="number" id="resource-quantity" value="1" min="1" class="w-20 p-2 border border-gray-300 rounded-md"></div><button type="button" id="add-predefined-resource-btn" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">เพิ่ม</button></div></fieldset><fieldset class="border p-2 rounded-md"><legend class="px-1 text-sm">เพิ่มรายการเอง</legend><div class="flex gap-2 items-end"><div class="flex-grow"><label for="custom-resource-name" class="text-xs">ชื่อ</label><input type="text" id="custom-resource-name" class="w-full p-2 border border-gray-300 rounded-md"></div><div><label for="custom-resource-price" class="text-xs">ราคา/หน่วย</label><input type="number" id="custom-resource-price" class="w-24 p-2 border border-gray-300 rounded-md"></div><div><label for="custom-resource-quantity" class="text-xs">จำนวน</label><input type="number" id="custom-resource-quantity" value="1" min="1" class="w-20 p-2 border border-gray-300 rounded-md"></div><button type="button" id="add-custom-resource-btn" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">เพิ่ม</button></div></fieldset></div></div><div class="mt-4"><h4 class="font-medium text-gray-800 mb-2">รายการทรัพยากรในโครงการ</h4><div class="max-h-48 overflow-y-auto"><table class="min-w-full"><thead class="bg-gray-100"><tr><th class="p-2 text-left text-sm">รายการ</th><th class="p-2 text-right text-sm">ราคา/หน่วย</th><th class="p-2 text-right text-sm">จำนวน</th><th class="p-2 text-right text-sm">รวม</th><th class="p-2 text-center text-sm"></th></tr></thead><tbody id="project-resources-table"></tbody></table></div><div id="resource-summary" class="mt-2 text-right font-semibold"></div></div></div></fieldset>
                 <div class="mt-6 flex justify-end space-x-4"><button type="button" id="cancel-project-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg">ยกเลิก</button><button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg">บันทึกโครงการ</button></div>
             </form>
         </div>
@@ -168,81 +116,36 @@
 
     <!-- Project Details Modal -->
     <div id="details-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center modal-backdrop overflow-y-auto p-4">
-        <div class="bg-white rounded-lg shadow-xl p-8 w-full max-w-3xl mx-auto">
-             <h2 id="details-title" class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2"></h2>
-             <div id="details-content" class="space-y-4 text-gray-700"></div>
-             <div class="mt-6 flex justify-end space-x-4"><button type="button" id="details-close-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg">ปิด</button><button type="button" id="details-pdf-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg">ดาวน์โหลด PDF</button></div>
-        </div>
+        <div class="bg-white rounded-lg shadow-xl p-8 w-full max-w-3xl mx-auto"><h2 id="details-title" class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2"></h2><div id="details-content" class="space-y-4 text-gray-700"></div><div class="mt-6 flex justify-end space-x-4"><button type="button" id="details-close-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg">ปิด</button><button type="button" id="details-pdf-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg">ดาวน์โหลด PDF</button></div></div>
     </div>
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         let currentUser = null;
         let publicStatsChart = null;
+        let tempProjectResources = [];
 
         let masterData = {
             departments: [{ id: 1, text: 'ฝ่ายบริหารวิชาการ' }, { id: 2, text: 'ฝ่ายบริหารงบประมาณ' }, { id: 3, text: 'ฝ่ายบริหารงานบุคคล' }, { id: 4, text: 'ฝ่ายบริหารทั่วไป' }],
             learningAreas: [{ id: 1, text: 'กลุ่มสาระฯ ภาษาไทย' }, { id: 2, text: 'กลุ่มสาระฯ คณิตศาสตร์' }, { id: 3, text: 'กลุ่มสาระฯ วิทยาศาสตร์และเทคโนโลยี' }],
             standards: [{ id: 1, text: 'มาตรฐานที่ 1 คุณภาพของผู้เรียน' }, { id: 2, text: 'มาตรฐานที่ 2 กระบวนการบริหารและการจัดการ' }],
-            strategies: [{ id: 1, text: 'กลยุทธ์ที่ 1 พัฒนาคุณภาพผู้เรียน' }, { id: 2, text: 'กลยุทธ์ที่ 2 พัฒนาคุณภาพครู' }]
+            strategies: [{ id: 1, text: 'กลยุทธ์ที่ 1 พัฒนาคุณภาพผู้เรียน' }, { id: 2, text: 'กลยุทธ์ที่ 2 พัฒนาคุณภาพครู' }],
+            resources: [
+                { id: 1, text: 'กระดาษ A4 (รีม)', price: 120 }, { id: 2, text: 'ปากกาไวท์บอร์ด (ด้าม)', price: 25 }, { id: 3, text: 'แฟ้มเอกสาร (อัน)', price: 30 }, { id: 4, text: 'ค่าอาหารว่างและเครื่องดื่ม (คน/มื้อ)', price: 25 }, { id: 5, text: 'ค่าวิทยากร (ชั่วโมง)', price: 600 }
+            ]
         };
 
-        // Expanded project data (45 projects)
         let projects = [
-            // Teacher 1
-            { id: 1, name: 'โครงการวันวิทยาศาสตร์', description: 'กิจกรรมส่งเสริมความรู้ทางวิทยาศาสตร์', owner: 'teacher1', submitted: true, departmentId: 1, learningAreaId: 3, standardIds: [1], strategyIds: [1] },
-            { id: 2, name: 'โครงการค่ายคุณธรรม', description: 'กิจกรรมส่งเสริมคุณธรรมจริยธรรม', owner: 'teacher1', submitted: false, departmentId: 4, learningAreaId: 1, standardIds: [1], strategyIds: [] },
-            { id: 7, name: 'โครงการอบรมการใช้ ICT', description: 'พัฒนาทักษะดิจิทัลสำหรับครู', owner: 'teacher1', submitted: true, departmentId: 3, learningAreaId: 3, standardIds: [2], strategyIds: [2] },
-            { id: 10, name: 'โครงการติว O-NET', description: 'เตรียมความพร้อมนักเรียนสอบระดับชาติ', owner: 'teacher1', submitted: true, departmentId: 1, learningAreaId: 2, standardIds: [1], strategyIds: [1] },
-            { id: 11, name: 'โครงการ English Camp', description: 'ค่ายส่งเสริมทักษะภาษาอังกฤษ', owner: 'teacher1', submitted: false, departmentId: 1, learningAreaId: 1, standardIds: [1], strategyIds: [1] },
-            { id: 12, name: 'โครงการจัดซื้อสื่อการสอน', description: 'จัดหาสื่อเทคโนโลยีเพื่อการศึกษา', owner: 'teacher1', submitted: true, departmentId: 2, learningAreaId: 3, standardIds: [2], strategyIds: [2] },
-            { id: 13, name: 'โครงการเยี่ยมบ้านนักเรียน', description: 'สร้างความสัมพันธ์ระหว่างบ้านและโรงเรียน', owner: 'teacher1', submitted: true, departmentId: 4, learningAreaId: 1, standardIds: [1], strategyIds: [] },
-            { id: 14, name: 'โครงการพัฒนาบุคลากร', description: 'ส่งเสริมครูเข้ารับการอบรม', owner: 'teacher1', submitted: false, departmentId: 3, learningAreaId: 2, standardIds: [2], strategyIds: [2] },
-            { id: 15, name: 'โครงการแข่งขันตอบปัญหาวิชาการ', description: 'เวทีแสดงความสามารถของนักเรียน', owner: 'teacher1', submitted: true, departmentId: 1, learningAreaId: 3, standardIds: [1], strategyIds: [1] },
-
-            // Teacher 2
-            { id: 3, name: 'โครงการอบรมเชิงปฏิบัติการ', description: 'ส่งเสริมการเรียนรู้ของครู', owner: 'teacher2', submitted: true, departmentId: 3, learningAreaId: 2, standardIds: [2], strategyIds: [2] },
-            { id: 4, name: 'โครงการพัฒนาแหล่งเรียนรู้', description: 'ปรับปรุงห้องสมุดและสวนพฤกษศาสตร์', owner: 'teacher2', submitted: false, departmentId: 4, learningAreaId: 3, standardIds: [2], strategyIds: [1] },
-            { id: 8, name: 'โครงการทัศนศึกษา', description: 'เปิดโลกทัศน์การเรียนรู้นอกห้องเรียน', owner: 'teacher2', submitted: false, departmentId: 1, learningAreaId: 1, standardIds: [1], strategyIds: [1] },
-            { id: 16, name: 'โครงการวันภาษาไทย', description: 'อนุรักษ์และสืบสานภาษาไทย', owner: 'teacher2', submitted: true, departmentId: 1, learningAreaId: 1, standardIds: [1], strategyIds: [] },
-            { id: 17, name: 'โครงการซ่อมบำรุงอาคาร', description: 'ปรับปรุงซ่อมแซมอาคารเรียน', owner: 'teacher2', submitted: true, departmentId: 2, learningAreaId: 3, standardIds: [2], strategyIds: [] },
-            { id: 18, name: 'โครงการโรงเรียนสีเขียว', description: 'รณรงค์การประหยัดพลังงานและสิ่งแวดล้อม', owner: 'teacher2', submitted: false, departmentId: 4, learningAreaId: 3, standardIds: [2], strategyIds: [1] },
-            { id: 19, name: 'โครงการแนะแนวศึกษาต่อ', description: 'ให้ข้อมูลนักเรียนเพื่อศึกษาต่อ', owner: 'teacher2', submitted: true, departmentId: 1, learningAreaId: 2, standardIds: [1], strategyIds: [1] },
-            { id: 20, name: 'โครงการประเมินผลการปฏิบัติงาน', description: 'ประเมินผลการทำงานของบุคลากร', owner: 'teacher2', submitted: true, departmentId: 3, learningAreaId: 1, standardIds: [2], strategyIds: [2] },
-            { id: 21, name: 'โครงการจัดหาคอมพิวเตอร์', description: 'เพิ่มจำนวนคอมพิวเตอร์เพื่อการเรียนรู้', owner: 'teacher2', submitted: false, departmentId: 2, learningAreaId: 3, standardIds: [2], strategyIds: [2] },
-
-            // Teacher 3
-            { id: 5, name: 'โครงการสัปดาห์ห้องสมุด', description: 'จัดกิจกรรมส่งเสริมการอ่าน', owner: 'teacher3', submitted: true, departmentId: 1, learningAreaId: 1, standardIds: [1], strategyIds: [1] },
-            { id: 6, name: 'โครงการแข่งขันกีฬาภายใน', description: 'ส่งเสริมสุขภาพและพลานามัย', owner: 'teacher3', submitted: true, departmentId: 4, learningAreaId: 2, standardIds: [1], strategyIds: [] },
-            { id: 9, name: 'โครงการปัจฉิมนิเทศ', description: 'กิจกรรมสำหรับนักเรียนที่สำเร็จการศึกษา', owner: 'teacher3', submitted: true, departmentId: 1, learningAreaId: 2, standardIds: [1], strategyIds: [] },
-            { id: 22, name: 'โครงการวันคริสต์มาส', description: 'กิจกรรมแลกเปลี่ยนวัฒนธรรม', owner: 'teacher3', submitted: true, departmentId: 4, learningAreaId: 1, standardIds: [1], strategyIds: [] },
-            { id: 23, name: 'โครงการคณิตคิดเร็ว', description: 'แข่งขันคิดเลขเร็วระดับโรงเรียน', owner: 'teacher3', submitted: false, departmentId: 1, learningAreaId: 2, standardIds: [1], strategyIds: [1] },
-            { id: 24, name: 'โครงการปรับปรุงภูมิทัศน์', description: 'พัฒนาสภาพแวดล้อมในโรงเรียน', owner: 'teacher3', submitted: true, departmentId: 4, learningAreaId: 3, standardIds: [2], strategyIds: [] },
-            { id: 25, name: 'โครงการอบรมครูผู้ช่วย', description: 'เตรียมความพร้อมครูบรรจุใหม่', owner: 'teacher3', submitted: false, departmentId: 3, learningAreaId: 1, standardIds: [2], strategyIds: [2] },
-            { id: 26, name: 'โครงการจัดทำแผนปฏิบัติการ', description: 'วางแผนการดำเนินงานประจำปี', owner: 'teacher3', submitted: true, departmentId: 2, learningAreaId: 2, standardIds: [2], strategyIds: [] },
-            { id: 27, name: 'โครงการประกวดโครงงานวิทยาศาสตร์', description: 'ส่งเสริมนักวิจัยน้อย', owner: 'teacher3', submitted: true, departmentId: 1, learningAreaId: 3, standardIds: [1], strategyIds: [1] },
-
-            // Teacher 4
-            { id: 28, name: 'โครงการวันสุนทรภู่', description: 'รำลึกกวีเอกของไทย', owner: 'teacher4', submitted: true, departmentId: 1, learningAreaId: 1, standardIds: [1], strategyIds: [] },
-            { id: 29, name: 'โครงการ Big Cleaning Day', description: 'กิจกรรมทำความสะอาดโรงเรียน', owner: 'teacher4', submitted: true, departmentId: 4, learningAreaId: 3, standardIds: [2], strategyIds: [] },
-            { id: 30, name: 'โครงการศึกษาดูงาน', description: 'นำครูไปศึกษาดูงานโรงเรียนต้นแบบ', owner: 'teacher4', submitted: false, departmentId: 3, learningAreaId: 2, standardIds: [2], strategyIds: [2] },
-            { id: 31, name: 'โครงการตลาดนัดวิชาการ', description: 'แสดงผลงานนักเรียนและครู', owner: 'teacher4', submitted: true, departmentId: 1, learningAreaId: 3, standardIds: [1], strategyIds: [1] },
-            { id: 32, name: 'โครงการสารสนเทศโรงเรียน', description: 'พัฒนาระบบข้อมูลของโรงเรียน', owner: 'teacher4', submitted: false, departmentId: 2, learningAreaId: 3, standardIds: [2], strategyIds: [2] },
-            { id: 33, name: 'โครงการประชุมผู้ปกครอง', description: 'สร้างความเข้าใจร่วมกันระหว่างบ้านและโรงเรียน', owner: 'teacher4', submitted: true, departmentId: 4, learningAreaId: 1, standardIds: [2], strategyIds: [] },
-            { id: 34, name: 'โครงการประกันคุณภาพการศึกษา', description: 'เตรียมรับการประเมินคุณภาพ', owner: 'teacher4', submitted: true, departmentId: 1, learningAreaId: 2, standardIds: [2], strategyIds: [] },
-            { id: 35, name: 'โครงการอบรมภาวะผู้นำ', description: 'พัฒนาศักยภาพสภานักเรียน', owner: 'teacher4', submitted: false, departmentId: 4, learningAreaId: 1, standardIds: [1], strategyIds: [1] },
-            { id: 36, name: 'โครงการจัดทำวารสารโรงเรียน', description: 'ประชาสัมพันธ์ข่าวสารและผลงาน', owner: 'teacher4', submitted: true, departmentId: 1, learningAreaId: 1, standardIds: [2], strategyIds: [] },
-
-            // Teacher 5
-            { id: 37, name: 'โครงการ To Be Number One', description: 'รณรงค์ป้องกันยาเสพติด', owner: 'teacher5', submitted: true, departmentId: 4, learningAreaId: 3, standardIds: [1], strategyIds: [] },
-            { id: 38, name: 'โครงการส่งเสริมประชาธิปไตย', description: 'กิจกรรมเลือกตั้งสภานักเรียน', owner: 'teacher5', submitted: true, departmentId: 4, learningAreaId: 1, standardIds: [1], strategyIds: [] },
-            { id: 39, name: 'โครงการพัฒนาหลักสูตร', description: 'ปรับปรุงหลักสูตรสถานศึกษา', owner: 'teacher5', submitted: false, departmentId: 1, learningAreaId: 2, standardIds: [2], strategyIds: [1] },
-            { id: 40, name: 'โครงการจัดซื้อครุภัณฑ์', description: 'จัดซื้อโต๊ะเก้าอี้สำหรับห้องเรียนใหม่', owner: 'teacher5', submitted: true, departmentId: 2, learningAreaId: 3, standardIds: [2], strategyIds: [] },
-            { id: 41, name: 'โครงการ PLC ชุมชนแห่งการเรียนรู้', description: 'ส่งเสริมการแลกเปลี่ยนเรียนรู้ของครู', owner: 'teacher5', submitted: true, departmentId: 3, learningAreaId: 1, standardIds: [2], strategyIds: [2] },
-            { id: 42, name: 'โครงการสอบวัดผลกลางภาค', description: 'ดำเนินการจัดสอบกลางภาคเรียน', owner: 'teacher5', submitted: true, departmentId: 1, learningAreaId: 2, standardIds: [1], strategyIds: [] },
-            { id: 43, name: 'โครงการซ้อมหนีไฟ', description: 'เตรียมความพร้อมรับมือเหตุฉุกเฉิน', owner: 'teacher5', submitted: false, departmentId: 4, learningAreaId: 3, standardIds: [2], strategyIds: [] },
-            { id: 44, name: 'โครงการวันแม่แห่งชาติ', description: 'จัดกิจกรรมเฉลิมพระเกียรติ', owner: 'teacher5', submitted: true, departmentId: 4, learningAreaId: 1, standardIds: [1], strategyIds: [] },
-            { id: 45, name: 'โครงการวิจัยในชั้นเรียน', description: 'ส่งเสริมครูทำวิจัยเพื่อพัฒนาผู้เรียน', owner: 'teacher5', submitted: false, departmentId: 1, learningAreaId: 3, standardIds: [2], strategyIds: [2] },
+            { id: 1, name: 'โครงการวันวิทยาศาสตร์', owner: 'teacher1', submitted: true, departmentId: 1, learningAreaId: 3, standardIds: [1], strategyIds: [1], budget: 5000, resources: [{ resourceId: 1, name: 'กระดาษ A4 (รีม)', price: 120, quantity: 10, isCustom: false }, { resourceId: null, name: 'อุปกรณ์ทดลอง', price: 2500, quantity: 1, isCustom: true }] },
+            { id: 2, name: 'โครงการค่ายคุณธรรม', owner: 'teacher1', submitted: false, departmentId: 4, learningAreaId: 1, standardIds: [1], strategyIds: [], budget: 10000, resources: [{ resourceId: 4, name: 'ค่าอาหารว่างและเครื่องดื่ม (คน/มื้อ)', price: 25, quantity: 100, isCustom: false }, { resourceId: 5, name: 'ค่าวิทยากร (ชั่วโมง)', price: 600, quantity: 3, isCustom: false }] },
+            { id: 3, name: 'โครงการอบรมเชิงปฏิบัติการ', owner: 'teacher2', submitted: true, departmentId: 3, learningAreaId: 2, standardIds: [2], strategyIds: [2], budget: 8000, resources: [] },
+            { id: 4, name: 'โครงการพัฒนาแหล่งเรียนรู้', owner: 'teacher2', submitted: false, departmentId: 4, learningAreaId: 3, standardIds: [2], strategyIds: [1], budget: 25000, resources: [] },
+            { id: 5, name: 'โครงการสัปดาห์ห้องสมุด', owner: 'teacher3', submitted: true, departmentId: 1, learningAreaId: 1, standardIds: [1], strategyIds: [1], budget: 3000, resources: [] },
+            { id: 6, name: 'โครงการแข่งขันกีฬาภายใน', owner: 'teacher3', submitted: true, departmentId: 4, learningAreaId: 2, standardIds: [1], strategyIds: [], budget: 50000, resources: [] },
+            { id: 7, name: 'โครงการอบรมการใช้ ICT', owner: 'teacher1', submitted: true, departmentId: 3, learningAreaId: 3, standardIds: [2], strategyIds: [2], budget: 12000, resources: [] },
+            { id: 8, name: 'โครงการทัศนศึกษา', owner: 'teacher2', submitted: false, departmentId: 1, learningAreaId: 1, standardIds: [1], strategyIds: [1], budget: 40000, resources: [] },
+            { id: 9, name: 'โครงการปัจฉิมนิเทศ', owner: 'teacher3', submitted: true, departmentId: 1, learningAreaId: 2, standardIds: [1], strategyIds: [], budget: 15000, resources: [] },
+            ...Array.from({ length: 36 }, (_, i) => ({ id: 10 + i, name: `โครงการตัวอย่าง ${10 + i}`, owner: `teacher${(i % 5) + 1}`, submitted: i % 2 === 0, departmentId: (i % 4) + 1, learningAreaId: (i % 3) + 1, standardIds: [1], strategyIds: [1], budget: (10 + i) * 1000, resources: [] })),
         ];
         let nextProjectId = 46;
 
@@ -260,264 +163,148 @@
             const learningArea = masterData.learningAreas.find(l => l.id === project.learningAreaId)?.text || 'N/A';
             const standardsText = project.standardIds.map(id => masterData.standards.find(s => s.id === id)?.text || '').join('\n');
             const strategiesText = project.strategyIds.map(id => masterData.strategies.find(s => s.id === id)?.text || '').join('\n');
-            doc.autoTable({ startY: doc.lastAutoTable.finalY + 5, head: [['หัวข้อ', 'รายละเอียด']], body: [['ชื่อโครงการ', project.name], ['ฝ่ายงาน', department], ['กลุ่มสาระ', learningArea], ['ผู้รับผิดชอบ', project.owner], ['หลักการและเหตุผล', project.description], ['สอดคล้องกับมาตรฐานการศึกษา', standardsText], ['สอดคล้องกับกลยุทธ์', strategiesText],], headStyles: { fillColor: [22, 163, 74] }, styles: { font: 'Helvetica' }});
+            doc.autoTable({ startY: doc.lastAutoTable.finalY + 5, head: [['หัวข้อ', 'รายละเอียด']], body: [['ชื่อโครงการ', project.name], ['ฝ่ายงาน', department], ['ผู้รับผิดชอบ', project.owner], ['หลักการและเหตุผล', project.description], ['มาตรฐานการศึกษา', standardsText], ['กลยุทธ์', strategiesText], ['งบประมาณ', `${project.budget.toLocaleString('th-TH')} บาท`]], headStyles: { fillColor: [22, 163, 74] }, styles: { font: 'Helvetica' }});
+            if (project.resources.length > 0) {
+                const totalCost = project.resources.reduce((sum, r) => sum + r.price * r.quantity, 0);
+                doc.autoTable({ startY: doc.lastAutoTable.finalY + 5, head: [['รายการทรัพยากร', 'ราคา/หน่วย', 'จำนวน', 'รวม']], body: [...project.resources.map(r => [r.name, r.price, r.quantity, r.price * r.quantity]), [{ content: 'รวมทั้งสิ้น', colSpan: 3, styles: { halign: 'right' } }, totalCost]], footStyles: { fontStyle: 'bold' }});
+            }
             doc.save(`project-${project.id}.pdf`);
         }
 
         const app = {
             elements: {
-                appContainer: document.getElementById('app'),
-                loginScreen: document.getElementById('login-screen'),
-                projectModal: document.getElementById('project-modal'),
-                detailsModal: document.getElementById('details-modal'),
-                userInfo: document.getElementById('user-info'),
-                tabButtons: document.querySelectorAll('.tab-btn'),
-                tabContents: document.querySelectorAll('.tab-content'),
-                adminOnlyElements: document.querySelectorAll('.admin-only'),
+                appContainer: document.getElementById('app'), loginScreen: document.getElementById('login-screen'), projectModal: document.getElementById('project-modal'), detailsModal: document.getElementById('details-modal'), userInfo: document.getElementById('user-info'), tabButtons: document.querySelectorAll('.tab-btn'), tabContents: document.querySelectorAll('.tab-content'), adminOnlyElements: document.querySelectorAll('.admin-only'), masterDataContainer: document.getElementById('master-data-container'),
             },
-
-            init() {
-                this.addEventListeners();
-                this.renderPublicDashboard();
-            },
-            
+            init() { this.addEventListeners(); this.renderPublicDashboard(); },
             renderPublicDashboard() {
-                const submittedCount = projects.filter(p => p.submitted).length;
-                const pendingCount = projects.length - submittedCount;
-                const totalCount = projects.length;
-
-                document.getElementById('stats-submitted').textContent = submittedCount;
-                document.getElementById('stats-pending').textContent = pendingCount;
-                document.getElementById('stats-total').innerHTML = `<span class="text-4xl font-bold text-gray-800">${totalCount}</span><span class="text-gray-500">โครงการ</span>`;
-
+                const submittedCount = projects.filter(p => p.submitted).length; const pendingCount = projects.length - submittedCount; const totalCount = projects.length;
+                document.getElementById('stats-submitted').textContent = submittedCount; document.getElementById('stats-pending').textContent = pendingCount; document.getElementById('stats-total').innerHTML = `<span class="text-4xl font-bold text-gray-800">${totalCount}</span><span class="text-gray-500">โครงการ</span>`;
                 const ctx = document.getElementById('stats-chart').getContext('2d');
-                const data = {
-                    labels: ['ส่งแล้ว', 'ยังไม่ส่ง'],
-                    datasets: [{
-                        data: [submittedCount, pendingCount],
-                        backgroundColor: ['#16A34A', '#F59E0B'], // green-600, amber-500
-                        borderColor: '#FFFFFF',
-                        borderWidth: 4,
-                        hoverOffset: 8
-                    }]
-                };
-
-                if (publicStatsChart) {
-                    publicStatsChart.data = data;
-                    publicStatsChart.update();
-                } else {
-                    publicStatsChart = new Chart(ctx, {
-                        type: 'doughnut',
-                        data: data,
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            cutout: '75%',
-                            plugins: {
-                                legend: { display: false },
-                                tooltip: { enabled: true }
-                            }
-                        }
-                    });
-                }
+                const data = { labels: ['ส่งแล้ว', 'ยังไม่ส่ง'], datasets: [{ data: [submittedCount, pendingCount], backgroundColor: ['#16A34A', '#F59E0B'], borderColor: '#FFFFFF', borderWidth: 4, hoverOffset: 8 }] };
+                if (publicStatsChart) { publicStatsChart.data = data; publicStatsChart.update(); } else { publicStatsChart = new Chart(ctx, { type: 'doughnut', data: data, options: { responsive: true, maintainAspectRatio: false, cutout: '75%', plugins: { legend: { display: false }, tooltip: { enabled: true } } } }); }
             },
-
             switchTab(tabId) {
-                this.elements.tabButtons.forEach(btn => {
-                    const isTarget = btn.dataset.tab === tabId;
-                    btn.classList.toggle('border-green-500', isTarget);
-                    btn.classList.toggle('text-green-600', isTarget);
-                    btn.classList.toggle('border-transparent', !isTarget);
-                    btn.classList.toggle('text-gray-500', !isTarget);
-                });
-                this.elements.tabContents.forEach(content => {
-                    content.classList.toggle('hidden', content.id !== `${tabId}-content`);
-                });
+                this.elements.tabButtons.forEach(btn => { const isTarget = btn.dataset.tab === tabId; btn.classList.toggle('border-green-500', isTarget); btn.classList.toggle('text-green-600', isTarget); btn.classList.toggle('border-transparent', !isTarget); btn.classList.toggle('text-gray-500', !isTarget); });
+                this.elements.tabContents.forEach(content => { content.classList.toggle('hidden', content.id !== `${tabId}-content`); });
             },
-
-            updateUIForUserRole() {
-                if (!currentUser) return;
-                this.elements.userInfo.textContent = `ผู้ใช้: ${currentUser.username} (${currentUser.role})`;
-                this.elements.adminOnlyElements.forEach(el => {
-                    el.classList.toggle('hidden', currentUser.role !== 'admin');
-                });
-                this.switchTab('dashboard');
-                this.renderAll();
-            },
-
-            renderAll() {
-                this.renderDashboard();
-                this.renderMyProjects();
-                if (currentUser.role === 'admin') {
-                    this.renderAllProjects();
-                    this.renderMasterData();
-                }
-                this.renderPublicDashboard();
-            },
-
+            updateUIForUserRole() { if (!currentUser) return; this.elements.userInfo.textContent = `ผู้ใช้: ${currentUser.username} (${currentUser.role})`; this.elements.adminOnlyElements.forEach(el => { el.classList.toggle('hidden', currentUser.role !== 'admin'); }); this.switchTab('dashboard'); this.renderAll(); },
+            renderAll() { this.renderDashboard(); this.renderMyProjects(); if (currentUser.role === 'admin') { this.renderAllProjects(); this.renderMasterData(); } this.renderPublicDashboard(); },
             renderDashboard() {
                 const tableBody = document.getElementById('dashboard-table-body');
-                tableBody.innerHTML = projects.map(p => {
-                    const department = masterData.departments.find(d => d.id === p.departmentId)?.text || 'N/A';
-                    return `<tr><td class="px-6 py-4"><div class="text-sm font-medium text-gray-900">${p.name}</div></td><td class="px-6 py-4"><div class="text-sm text-gray-500">${department}</div></td><td class="px-6 py-4"><div class="text-sm text-gray-500">${p.owner}</div></td><td class="px-6 py-4"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${p.submitted ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'}">${p.submitted ? 'ส่งแล้ว' : 'ยังไม่ส่ง'}</span></td></tr>`;
-                }).join('');
+                tableBody.innerHTML = projects.map(p => { const department = masterData.departments.find(d => d.id === p.departmentId)?.text || 'N/A'; return `<tr><td class="px-6 py-4"><div class="text-sm font-medium text-gray-900">${p.name}</div></td><td class="px-6 py-4"><div class="text-sm text-gray-500">${department}</div></td><td class="px-6 py-4"><div class="text-sm text-gray-500">${p.owner}</div></td><td class="px-6 py-4"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${p.submitted ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'}">${p.submitted ? 'ส่งแล้ว' : 'ยังไม่ส่ง'}</span></td></tr>`; }).join('');
             },
-
             createProjectCard(project) {
-                const department = masterData.departments.find(d => d.id === project.departmentId)?.text || 'N/A';
-                const canEdit = currentUser.username === project.owner;
-                return `<div class="bg-white rounded-lg shadow-md p-5 flex flex-col justify-between"><div><p class="text-sm text-green-600 font-semibold">${department}</p><h3 class="text-lg font-bold text-gray-800">${project.name}</h3><p class="text-sm text-gray-600 mt-2">${project.description.substring(0, 80)}...</p><span class="mt-3 inline-block px-2 text-xs leading-5 font-semibold rounded-full ${project.submitted ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'}">${project.submitted ? 'ส่งแล้ว' : 'ยังไม่ส่ง'}</span></div><div class="mt-4 flex space-x-2"><button data-id="${project.id}" class="view-details-btn flex-1 bg-blue-100 text-blue-800 hover:bg-blue-200 text-sm font-bold py-2 px-4 rounded-lg">รายละเอียด</button>${canEdit ? `<button data-id="${project.id}" class="edit-project-btn flex-1 bg-yellow-100 text-yellow-800 hover:bg-yellow-200 text-sm font-bold py-2 px-4 rounded-lg">แก้ไข</button>` : ''}<button data-id="${project.id}" class="export-pdf-btn flex-1 bg-green-100 text-green-800 hover:bg-green-200 text-sm font-bold py-2 px-4 rounded-lg">PDF</button></div></div>`;
+                const department = masterData.departments.find(d => d.id === project.departmentId)?.text || 'N/A'; const canEdit = currentUser.username === project.owner;
+                return `<div class="bg-white rounded-lg shadow-md p-5 flex flex-col justify-between"><div><p class="text-sm text-green-600 font-semibold">${department}</p><h3 class="text-lg font-bold text-gray-800">${project.name}</h3><p class="text-sm text-gray-600 mt-2">งบประมาณ: ${project.budget.toLocaleString('th-TH')} บาท</p><span class="mt-3 inline-block px-2 text-xs leading-5 font-semibold rounded-full ${project.submitted ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'}">${project.submitted ? 'ส่งแล้ว' : 'ยังไม่ส่ง'}</span></div><div class="mt-4 flex space-x-2"><button data-id="${project.id}" class="view-details-btn flex-1 bg-blue-100 text-blue-800 hover:bg-blue-200 text-sm font-bold py-2 px-4 rounded-lg">รายละเอียด</button>${canEdit ? `<button data-id="${project.id}" class="edit-project-btn flex-1 bg-yellow-100 text-yellow-800 hover:bg-yellow-200 text-sm font-bold py-2 px-4 rounded-lg">แก้ไข</button>` : ''}<button data-id="${project.id}" class="export-pdf-btn flex-1 bg-green-100 text-green-800 hover:bg-green-200 text-sm font-bold py-2 px-4 rounded-lg">PDF</button></div></div>`;
             },
-            
-            renderMyProjects() {
-                const container = document.getElementById('my-projects-list');
-                const userProjects = projects.filter(p => p.owner === currentUser.username);
-                container.innerHTML = userProjects.length > 0 ? userProjects.map(p => this.createProjectCard(p)).join('') : '<p class="text-gray-500 col-span-full">คุณยังไม่มีโครงการ</p>';
-            },
-
+            renderMyProjects() { const container = document.getElementById('my-projects-list'); const userProjects = projects.filter(p => p.owner === currentUser.username); container.innerHTML = userProjects.length > 0 ? userProjects.map(p => this.createProjectCard(p)).join('') : '<p class="text-gray-500 col-span-full">คุณยังไม่มีโครงการ</p>'; },
             renderAllProjects() {
-                const container = document.getElementById('all-projects-list');
-                container.innerHTML = ''; // Clear previous content
-
-                const projectsByDept = projects.reduce((acc, project) => {
-                    const deptId = project.departmentId;
-                    if (!acc[deptId]) acc[deptId] = [];
-                    acc[deptId].push(project);
-                    return acc;
-                }, {});
-
+                const container = document.getElementById('all-projects-list'); container.innerHTML = '';
+                const projectsByDept = projects.reduce((acc, p) => { (acc[p.departmentId] = acc[p.departmentId] || []).push(p); return acc; }, {});
                 masterData.departments.forEach(dept => {
-                    const deptProjects = projectsByDept[dept.id] || [];
-                    if (deptProjects.length === 0) return;
-
+                    const deptProjects = projectsByDept[dept.id] || []; if (deptProjects.length === 0) return;
                     const submittedCount = deptProjects.filter(p => p.submitted).length;
-                    const totalCount = deptProjects.length;
-
-                    const departmentSection = document.createElement('div');
-                    departmentSection.className = 'mb-10';
-                    departmentSection.innerHTML = `
-                        <div class="border-b border-gray-200 pb-2 mb-4">
-                            <h3 class="text-xl font-bold text-gray-800">${dept.text}</h3>
-                            <p class="text-sm text-gray-500">
-                                สถานะ: <span class="font-semibold text-green-600">${submittedCount}</span> / ${totalCount} โครงการ (ส่งแล้ว)
-                            </p>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            ${deptProjects.map(p => this.createProjectCard(p)).join('')}
-                        </div>
-                    `;
+                    const departmentSection = document.createElement('div'); departmentSection.className = 'mb-10';
+                    departmentSection.innerHTML = `<div class="border-b border-gray-200 pb-2 mb-4"><h3 class="text-xl font-bold text-gray-800">${dept.text}</h3><p class="text-sm text-gray-500">สถานะ: <span class="font-semibold text-green-600">${submittedCount}</span> / ${deptProjects.length} โครงการ (ส่งแล้ว)</p></div><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">${deptProjects.map(p => this.createProjectCard(p)).join('')}</div>`;
                     container.appendChild(departmentSection);
                 });
             },
-
             renderMasterData() {
-                Object.keys(masterData).forEach(key => {
-                    const container = document.querySelector(`[data-master="${key}"] .master-list`);
-                    if (container) container.innerHTML = masterData[key].map(item => `<li class="flex justify-between items-center"><span>${item.text}</span><button data-master-key="${key}" data-id="${item.id}" class="delete-master-btn text-red-500 hover:text-red-700">ลบ</button></li>`).join('');
+                const container = this.elements.masterDataContainer; container.innerHTML = '';
+                const masterTypes = { departments: 'ฝ่ายงาน', learningAreas: 'กลุ่มสาระฯ', standards: 'มาตรฐานการศึกษา', strategies: 'กลยุทธ์โรงเรียน', resources: 'ทรัพยากรกลาง' };
+                Object.keys(masterTypes).forEach(key => {
+                    const isResource = key === 'resources';
+                    const listHTML = masterData[key].map(item => `<li class="flex justify-between items-center"><span>${item.text} ${isResource ? `(${item.price} บาท)` : ''}</span><button data-master-key="${key}" data-id="${item.id}" class="delete-master-btn text-red-500 hover:text-red-700">ลบ</button></li>`).join('');
+                    const card = document.createElement('div'); card.className = 'bg-white p-6 rounded-lg shadow-md'; card.dataset.master = key;
+                    card.innerHTML = `<h3 class="text-lg font-semibold mb-3">${masterTypes[key]}</h3><div class="mb-4"><input type="text" placeholder="เพิ่มชื่อ..." class="master-input-name w-full p-2 border rounded mb-2">${isResource ? '<input type="number" placeholder="ราคา" class="master-input-price w-full p-2 border rounded">' : ''}<button class="add-master-btn mt-2 w-full bg-blue-500 text-white p-2 rounded">เพิ่ม</button></div><ul class="master-list list-disc pl-5 space-y-2">${listHTML}</ul>`;
+                    container.appendChild(card);
                 });
             },
-            
             openProjectModal(projectId = null) {
-                const form = document.getElementById('project-form');
-                form.reset();
+                const form = document.getElementById('project-form'); form.reset(); tempProjectResources = [];
                 document.getElementById('project-id').value = '';
-                const populateSelect = (id, data) => { document.getElementById(id).innerHTML = `<option value="">-- กรุณาเลือก --</option>` + data.map(item => `<option value="${item.id}">${item.text}</option>`).join(''); };
+                const populateSelect = (id, data) => { document.getElementById(id).innerHTML = `<option value="">-- กรุณาเลือก --</option>${data.map(item => `<option value="${item.id}">${item.text}</option>`).join('')}`; };
                 const populateCheckboxes = (id, data) => { document.getElementById(id).innerHTML = data.map(item => `<label class="flex items-center"><input type="checkbox" name="${id}" value="${item.id}" class="h-4 w-4 text-green-600 border-gray-300 rounded"><span class="ml-2 text-gray-700">${item.text}</span></label>`).join(''); };
-                populateSelect('project-department', masterData.departments);
-                populateSelect('project-learningArea', masterData.learningAreas);
-                populateCheckboxes('project-standards', masterData.standards);
-                populateCheckboxes('project-strategies', masterData.strategies);
-
+                populateSelect('project-department', masterData.departments); populateSelect('project-learningArea', masterData.learningAreas); populateSelect('resource-select', masterData.resources);
+                populateCheckboxes('project-standards', masterData.standards); populateCheckboxes('project-strategies', masterData.strategies);
                 if (projectId) {
                     const project = projects.find(p => p.id === projectId);
                     document.getElementById('project-modal-title').textContent = 'แก้ไขโครงการ';
-                    document.getElementById('project-id').value = project.id;
-                    document.getElementById('project-name').value = project.name;
-                    document.getElementById('project-description').value = project.description;
-                    document.getElementById('project-department').value = project.departmentId;
-                    document.getElementById('project-learningArea').value = project.learningAreaId;
+                    document.getElementById('project-id').value = project.id; document.getElementById('project-name').value = project.name; document.getElementById('project-description').value = project.description; document.getElementById('project-department').value = project.departmentId; document.getElementById('project-learningArea').value = project.learningAreaId; document.getElementById('project-budget').value = project.budget;
                     project.standardIds.forEach(id => document.querySelector(`#project-standards input[value="${id}"]`).checked = true);
                     project.strategyIds.forEach(id => document.querySelector(`#project-strategies input[value="${id}"]`).checked = true);
-                } else {
-                    document.getElementById('project-modal-title').textContent = 'สร้างโครงการใหม่';
-                }
-                this.elements.projectModal.classList.remove('hidden');
+                    tempProjectResources = JSON.parse(JSON.stringify(project.resources));
+                } else { document.getElementById('project-modal-title').textContent = 'สร้างโครงการใหม่'; }
+                this.renderTempResources(); this.elements.projectModal.classList.remove('hidden');
             },
-
             showDetailsModal(projectId) {
-                const project = projects.find(p => p.id === projectId);
-                if (!project) return;
+                const project = projects.find(p => p.id === projectId); if (!project) return;
                 document.getElementById('details-title').textContent = project.name;
                 const contentDiv = document.getElementById('details-content');
                 const getMasterText = (key, id) => masterData[key].find(item => item.id === id)?.text || 'N/A';
                 const getMasterList = (key, ids) => ids.map(id => `<li>${getMasterText(key, id)}</li>`).join('') || '<li>-</li>';
-                contentDiv.innerHTML = `<p><strong>ฝ่ายงาน:</strong> ${getMasterText('departments', project.departmentId)}</p><p><strong>กลุ่มสาระ:</strong> ${getMasterText('learningAreas', project.learningAreaId)}</p><p><strong>ผู้รับผิดชอบ:</strong> ${project.owner}</p><p><strong>หลักการและเหตุผล:</strong> ${project.description}</p><div><strong>มาตรฐานการศึกษา:</strong> <ul class="list-disc pl-6 mt-1">${getMasterList('standards', project.standardIds)}</ul></div><div><strong>กลยุทธ์โรงเรียน:</strong> <ul class="list-disc pl-6 mt-1">${getMasterList('strategies', project.strategyIds)}</ul></div>`;
-                document.getElementById('details-pdf-btn').onclick = () => generatePdf(projectId);
-                this.elements.detailsModal.classList.remove('hidden');
+                const totalCost = project.resources.reduce((sum, r) => sum + r.price * r.quantity, 0);
+                const resourceTable = project.resources.length > 0 ? `<div class="border-t pt-4 mt-4"><h4 class="font-semibold mb-2">งบประมาณและทรัพยากร</h4><p><strong>งบประมาณ:</strong> ${project.budget.toLocaleString('th-TH')} บาท</p><table class="min-w-full mt-2"><thead><tr><th class="p-2 text-left">รายการ</th><th class="p-2 text-right">ราคา</th><th class="p-2 text-right">จำนวน</th><th class="p-2 text-right">รวม</th></tr></thead><tbody>${project.resources.map(r => `<tr><td class="p-2">${r.name}</td><td class="p-2 text-right">${r.price.toLocaleString('th-TH')}</td><td class="p-2 text-right">${r.quantity}</td><td class="p-2 text-right">${(r.price * r.quantity).toLocaleString('th-TH')}</td></tr>`).join('')}</tbody><tfoot><tr class="font-bold"><td colspan="3" class="p-2 text-right">รวมค่าใช้จ่าย:</td><td class="p-2 text-right">${totalCost.toLocaleString('th-TH')} บาท</td></tr></tfoot></table></div>` : '';
+                contentDiv.innerHTML = `<p><strong>ฝ่ายงาน:</strong> ${getMasterText('departments', project.departmentId)}</p><p><strong>ผู้รับผิดชอบ:</strong> ${project.owner}</p><p><strong>หลักการและเหตุผล:</strong> ${project.description}</p><div><strong>มาตรฐานการศึกษา:</strong> <ul class="list-disc pl-6 mt-1">${getMasterList('standards', project.standardIds)}</ul></div>${resourceTable}`;
+                document.getElementById('details-pdf-btn').onclick = () => generatePdf(projectId); this.elements.detailsModal.classList.remove('hidden');
             },
-
+            renderTempResources() {
+                const tableBody = document.getElementById('project-resources-table');
+                const summaryDiv = document.getElementById('resource-summary');
+                const budget = parseFloat(document.getElementById('project-budget').value) || 0;
+                tableBody.innerHTML = tempProjectResources.map((r, index) => `<tr><td class="p-2">${r.name}</td><td class="p-2 text-right">${r.price.toLocaleString('th-TH')}</td><td class="p-2 text-right">${r.quantity}</td><td class="p-2 text-right">${(r.price * r.quantity).toLocaleString('th-TH')}</td><td class="p-2 text-center"><button type="button" data-index="${index}" class="remove-resource-btn text-red-500">X</button></td></tr>`).join('');
+                const totalCost = tempProjectResources.reduce((sum, r) => sum + r.price * r.quantity, 0);
+                const balance = budget - totalCost;
+                summaryDiv.innerHTML = `<span>ยอดรวม: ${totalCost.toLocaleString('th-TH')} บาท</span><br><span class="${balance < 0 ? 'text-red-500' : 'text-green-600'}">คงเหลือ: ${balance.toLocaleString('th-TH')} บาท</span>`;
+            },
             addEventListeners() {
-                document.getElementById('login-teacher-btn').addEventListener('click', () => this.handleLogin('teacher'));
-                document.getElementById('login-admin-btn').addEventListener('click', () => this.handleLogin('admin'));
-                document.getElementById('logout-btn').addEventListener('click', () => this.handleLogout());
+                document.getElementById('login-teacher-btn').addEventListener('click', () => this.handleLogin('teacher')); document.getElementById('login-admin-btn').addEventListener('click', () => this.handleLogin('admin')); document.getElementById('logout-btn').addEventListener('click', () => this.handleLogout());
                 this.elements.tabButtons.forEach(btn => btn.addEventListener('click', () => this.switchTab(btn.dataset.tab)));
                 document.getElementById('create-project-btn').addEventListener('click', () => this.openProjectModal());
                 document.getElementById('project-form').addEventListener('submit', (e) => this.handleProjectFormSubmit(e));
-                document.getElementById('cancel-project-btn').addEventListener('click', () => this.elements.projectModal.classList.add('hidden'));
-                document.getElementById('details-close-btn').addEventListener('click', () => this.elements.detailsModal.classList.add('hidden'));
+                document.getElementById('cancel-project-btn').addEventListener('click', () => this.elements.projectModal.classList.add('hidden')); document.getElementById('details-close-btn').addEventListener('click', () => this.elements.detailsModal.classList.add('hidden'));
+                document.getElementById('add-predefined-resource-btn').addEventListener('click', () => this.handleAddPredefinedResource());
+                document.getElementById('add-custom-resource-btn').addEventListener('click', () => this.handleAddCustomResource());
+                document.getElementById('project-budget').addEventListener('input', () => this.renderTempResources());
                 document.body.addEventListener('click', (e) => {
                     if (e.target.classList.contains('view-details-btn')) this.showDetailsModal(parseInt(e.target.dataset.id));
                     if (e.target.classList.contains('edit-project-btn')) this.openProjectModal(parseInt(e.target.dataset.id));
                     if (e.target.classList.contains('export-pdf-btn')) generatePdf(parseInt(e.target.dataset.id));
                     if (e.target.classList.contains('add-master-btn')) this.handleAddMaster(e.target);
                     if (e.target.classList.contains('delete-master-btn')) this.handleDeleteMaster(e.target);
+                    if (e.target.classList.contains('remove-resource-btn')) this.handleRemoveTempResource(parseInt(e.target.dataset.index));
                 });
             },
-
-            handleLogin(role) {
-                const username = document.getElementById('login-username').value || (role === 'admin' ? 'admin' : 'teacher1');
-                currentUser = { username, role };
-                this.elements.loginScreen.classList.add('hidden');
-                this.elements.appContainer.classList.remove('hidden');
-                this.updateUIForUserRole();
+            handleAddPredefinedResource() {
+                const select = document.getElementById('resource-select'); const quantity = parseInt(document.getElementById('resource-quantity').value);
+                const resourceId = parseInt(select.value); const resource = masterData.resources.find(r => r.id === resourceId);
+                if (resource && quantity > 0) { tempProjectResources.push({ resourceId: resource.id, name: resource.text, price: resource.price, quantity: quantity, isCustom: false }); this.renderTempResources(); }
             },
-
-            handleLogout() {
-                currentUser = null;
-                this.elements.appContainer.classList.add('hidden');
-                this.elements.loginScreen.classList.remove('hidden');
+            handleAddCustomResource() {
+                const name = document.getElementById('custom-resource-name').value.trim(); const price = parseFloat(document.getElementById('custom-resource-price').value); const quantity = parseInt(document.getElementById('custom-resource-quantity').value);
+                if (name && price > 0 && quantity > 0) { tempProjectResources.push({ resourceId: null, name: name, price: price, quantity: quantity, isCustom: true }); this.renderTempResources(); document.getElementById('custom-resource-name').value = ''; document.getElementById('custom-resource-price').value = ''; }
             },
-
+            handleRemoveTempResource(index) { tempProjectResources.splice(index, 1); this.renderTempResources(); },
+            handleLogin(role) { const username = document.getElementById('login-username').value || (role === 'admin' ? 'admin' : 'teacher1'); currentUser = { username, role }; this.elements.loginScreen.classList.add('hidden'); this.elements.appContainer.classList.remove('hidden'); this.updateUIForUserRole(); },
+            handleLogout() { currentUser = null; this.elements.appContainer.classList.add('hidden'); this.elements.loginScreen.classList.remove('hidden'); },
             handleProjectFormSubmit(e) {
                 e.preventDefault();
                 const getCheckedValues = (name) => Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(cb => parseInt(cb.value));
-                const projectData = { id: parseInt(document.getElementById('project-id').value), name: document.getElementById('project-name').value, description: document.getElementById('project-description').value, departmentId: parseInt(document.getElementById('project-department').value), learningAreaId: parseInt(document.getElementById('project-learningArea').value), standardIds: getCheckedValues('project-standards'), strategyIds: getCheckedValues('project-strategies'), owner: currentUser.username, submitted: true };
-                if (projectData.id) {
-                    const index = projects.findIndex(p => p.id === projectData.id);
-                    if (index > -1) projects[index] = { ...projects[index], ...projectData };
-                } else {
-                    projectData.id = nextProjectId++;
-                    projects.push(projectData);
-                }
-                this.elements.projectModal.classList.add('hidden');
-                this.renderAll();
+                const projectData = { id: parseInt(document.getElementById('project-id').value), name: document.getElementById('project-name').value, description: document.getElementById('project-description').value, departmentId: parseInt(document.getElementById('project-department').value), learningAreaId: parseInt(document.getElementById('project-learningArea').value), standardIds: getCheckedValues('project-standards'), strategyIds: getCheckedValues('project-strategies'), owner: currentUser.username, submitted: true, budget: parseFloat(document.getElementById('project-budget').value) || 0, resources: JSON.parse(JSON.stringify(tempProjectResources)) };
+                if (projectData.id) { const index = projects.findIndex(p => p.id === projectData.id); if (index > -1) projects[index] = { ...projects[index], ...projectData }; } else { projectData.id = nextProjectId++; projects.push(projectData); }
+                this.elements.projectModal.classList.add('hidden'); this.renderAll();
             },
-
             handleAddMaster(button) {
-                const container = button.closest('[data-master]');
-                const key = container.dataset.master;
-                const input = container.querySelector('.master-input');
-                const text = input.value.trim();
-                if (text) { masterData[key].push({ id: Date.now(), text }); input.value = ''; this.renderMasterData(); }
+                const container = button.closest('[data-master]'); const key = container.dataset.master;
+                const nameInput = container.querySelector('.master-input-name'); const text = nameInput.value.trim();
+                if (text) {
+                    const newItem = { id: Date.now(), text };
+                    if (key === 'resources') { const priceInput = container.querySelector('.master-input-price'); newItem.price = parseFloat(priceInput.value) || 0; priceInput.value = ''; }
+                    masterData[key].push(newItem); nameInput.value = ''; this.renderMasterData();
+                }
             },
-
-            handleDeleteMaster(button) {
-                const { masterKey, id } = button.dataset;
-                masterData[masterKey] = masterData[masterKey].filter(item => item.id !== parseInt(id));
-                this.renderMasterData();
-            }
+            handleDeleteMaster(button) { const { masterKey, id } = button.dataset; masterData[masterKey] = masterData[masterKey].filter(item => item.id !== parseInt(id)); this.renderMasterData(); }
         };
-
         app.init();
     });
     </script>
